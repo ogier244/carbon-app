@@ -25,10 +25,10 @@ const addresses = {
 export const commonConfig: AppConfig = {
   mode: 'development',
   appName: 'Carbon DeFi',
-  appUrl: 'https://app.carbondefi.xyz',
-  carbonApi: 'https://api.carbondefi.xyz/v1/',
+  appUrl: 'http://localhost:3000',
+  carbonApi: '',
   externalLinks: {
-    analytics: 'http://analytics.carbondefi.xyz',
+    analytics: 'http://localhost:3002',
     simulatorRepo: 'https://github.com/bancorprotocol/carbon-simulator',
     duneDashboard: 'https://dune.com/bancor/carbon-by-bancor',
   },

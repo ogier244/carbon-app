@@ -17,8 +17,8 @@ const addresses = {
 export const commonConfig: AppConfig = {
   mode: 'development',
   appName: 'Carbon DeFi',
-  appUrl: 'https://celo.carbondefi.xyz',
-  carbonApi: 'https://celo-api.carbondefi.xyz/v1/',
+  appUrl: 'http://localhost:3000',
+  carbonApi: 'http://localhost:3000/api/v1/',
   selectedConnectors: ['MetaMask', 'Coinbase Wallet', 'Safe', 'WalletConnect'],
   blockedConnectors: ['Tailwind', 'Compass Wallet', 'Seif'],
   walletConnectProjectId: 'f9d8863ab6c03f2293d7d56d7c0c0853',

@@ -12,8 +12,8 @@ const addresses = {
 export const commonConfig: AppConfig = {
   mode: 'development',
   appName: 'Carbon DeFi',
-  appUrl: 'https://sei.carbondefi.xyz',
-  carbonApi: 'https://sei-api.carbondefi.xyz/v1/',
+  appUrl: 'http://localhost:3000',
+  carbonApi: 'http://localhost:3000/api/v1/',
   selectedConnectors: [
     'MetaMask',
     'Coinbase Wallet',

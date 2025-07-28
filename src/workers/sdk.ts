@@ -309,8 +309,23 @@ const sdkExposed = {
     sellPriceHigh: string,
     sellBudget: string,
     overrides?: PayableOverrides | undefined,
-  ) =>
-    carbonSDK.createBuySellStrategy(
+  ) => {
+    // DEBUG: Log what the worker receives
+    console.log('🔍 [DEBUG] SDK Worker → Carbon SDK:');
+    console.log('📍 Worker received parameters:');
+    console.log('  baseToken:', baseToken);
+    console.log('  quoteToken:', quoteToken);
+    console.log('  buyPriceLow:', buyPriceLow);
+    console.log('  buyPriceMarginal:', buyPriceMarginal);
+    console.log('  buyPriceHigh:', buyPriceHigh);
+    console.log('  buyBudget:', buyBudget);
+    console.log('  sellPriceLow:', sellPriceLow);
+    console.log('  sellPriceMarginal:', sellPriceMarginal);
+    console.log('  sellPriceHigh:', sellPriceHigh);
+    console.log('  sellBudget:', sellBudget);
+    console.log('  overrides:', overrides);
+
+    return carbonSDK.createBuySellStrategy(
       baseToken,
       quoteToken,
       buyPriceLow,
@@ -322,7 +337,8 @@ const sdkExposed = {
       sellPriceHigh,
       sellBudget,
       overrides,
-    ),
+    );
+  },
   batchCreateBuySellStrategies: (
     ...args: Parameters<(typeof carbonSDK)['batchCreateBuySellStrategies']>
   ) => carbonSDK.batchCreateBuySellStrategies(...args),

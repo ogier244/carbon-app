@@ -8,6 +8,8 @@ import cotiDev from './coti/development';
 import cotiProd from './coti/production';
 import blastDev from './blast/development';
 import blastProd from './blast/production';
+import hederaDev from './hedera/development';
+import hederaProd from './hedera/production';
 import { handleConfigOverrides } from './utils';
 
 const configs = {
@@ -30,6 +32,10 @@ const configs = {
   blast: {
     development: blastDev,
     production: blastProd,
+  },
+  hedera: {
+    development: hederaDev,
+    production: hederaProd,
   },
 };
 type Network = keyof typeof configs;

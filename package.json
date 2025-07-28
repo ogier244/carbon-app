@@ -89,6 +89,7 @@
     "prepare": "yarn husky install",
     "start": "vite",
     "start:ethereum": "cross-env VITE_NETWORK=ethereum vite",
+    "start:hedera": "cross-env VITE_NETWORK=hedera vite",
     "start:sei": "cross-env VITE_NETWORK=sei vite",
     "start:celo": "cross-env VITE_NETWORK=celo vite",
     "start:coti": "cross-env VITE_NETWORK=coti vite",

@@ -9,9 +9,9 @@ const addresses = {
 
 export const commonConfig: AppConfig = {
   mode: 'development',
-  appName: 'Carbon DeFi (Coti)',
-  appUrl: 'https://coti.carbondefi.xyz',
-  carbonApi: 'https://api.carbondefi.xyz/v1/coti/',
+  appName: 'Carbon DeFi',
+  appUrl: 'http://localhost:3000',
+  carbonApi: 'http://localhost:3000/api/v1/',
   selectedConnectors: ['MetaMask'],
   blockedConnectors: ['Tailwind', 'Compass Wallet', 'Seif'],
   walletConnectProjectId: '',

@@ -351,6 +351,20 @@ export const useCreateStrategyQuery = () => {
       order0,
       order1,
     }: CreateStrategyParams) => {
+      // DEBUG: Log what we're about to send to Carbon SDK
+      console.log('🔍 [DEBUG] SDK Query → Carbon SDK:');
+      console.log('📍 Raw Parameters to createBuySellStrategy:');
+      console.log('  baseToken:', base);
+      console.log('  quoteToken:', quote);
+      console.log('  buyPriceLow:', order0.min);
+      console.log('  buyPriceMarginal:', order0.marginalPrice || order0.max);
+      console.log('  buyPriceHigh:', order0.max);
+      console.log('  buyBudget:', order0.budget || '0');
+      console.log('  sellPriceLow:', order1.min);
+      console.log('  sellPriceMarginal:', order1.marginalPrice || order1.min);
+      console.log('  sellPriceHigh:', order1.max);
+      console.log('  sellBudget:', order1.budget || '0');
+
       const unsignedTx = await carbonSDK.createBuySellStrategy(
         base,
         quote,
@@ -363,6 +377,12 @@ export const useCreateStrategyQuery = () => {
         order1.max,
         order1.budget || '0',
       );
+
+      // DEBUG: Log the transaction that gets built
+      console.log('🔍 [DEBUG] Carbon SDK → Transaction:');
+      console.log('📍 Unsigned Transaction:', unsignedTx);
+      console.log('📍 Transaction Data:', unsignedTx.data);
+      console.log('📍 Transaction Value:', unsignedTx.value?.toString());
 
       return signer!.sendTransaction(unsignedTx);
     },

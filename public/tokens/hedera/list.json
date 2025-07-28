@@ -1,0 +1,36 @@
+{
+  "name": "Hedera Testnet Token List",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "logoURI": "https://hedera.com/logo.png",
+  "keywords": ["hedera", "testnet", "tokens"],
+  "tokens": [
+    {
+      "chainId": 296,
+      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+      "name": "HBAR",
+      "symbol": "HBAR",
+      "decimals": 8,
+      "logoURI": "/tokens/hedera/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.svg"
+    },
+    {
+      "chainId": 296,
+      "address": "0x000000000000000000000000000000000050623b",
+      "name": "TAUGF",
+      "symbol": "TAUGF",
+      "decimals": 6,
+      "logoURI": "/tokens/hedera/0x000000000000000000000000000000000050623b.svg"
+    },
+    {
+      "chainId": 296,
+      "address": "0x00000000000000000000000000000000004fe9f1",
+      "name": "TRPAX",
+      "symbol": "TRPAX",
+      "decimals": 8,
+      "logoURI": "/tokens/hedera/0x00000000000000000000000000000000004fe9f1.svg"
+    }
+  ]
+} 

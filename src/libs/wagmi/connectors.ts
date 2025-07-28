@@ -114,11 +114,19 @@ export const redirectSafeWallet = (
   currentId: number,
   redirectToId?: number,
 ) => {
+  // Skip redirect in development mode or when running locally
+  if (process.env.NODE_ENV === 'development') return;
+
   if (isIframe() && redirectToId && currentId !== redirectToId) {
     const networkToRedirect = networks.find(
       (network) => network.chainId === redirectToId,
     );
     if (!networkToRedirect) return;
+
+    // Skip redirect if all networks have the same appURL (local development)
+    const allSameUrl = networks.every((n) => n.appUrl === networks[0].appUrl);
+    if (allSameUrl) return;
+
     window.location.href = networkToRedirect.appUrl;
   }
 };

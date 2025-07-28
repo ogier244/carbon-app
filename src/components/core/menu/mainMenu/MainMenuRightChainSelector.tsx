@@ -17,7 +17,8 @@ interface Props {
 
 export const MainMenuRightChainSelector: FC<Props> = ({ networks }) => {
   const activeNetwork = networks.find((network) => network.isCurrentNetwork);
-  if (!activeNetwork || networks.length < 2) return;
+  if (!activeNetwork || networks.length < 2 || activeNetwork.id === 'hedera')
+    return null;
 
   const getFullPath = (path: string) => {
     const firstPathName = window.location.pathname.split('/')[1];

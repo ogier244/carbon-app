@@ -22,22 +22,42 @@ export const toCreateStrategyParams = (
   quote: Token,
   order0: BaseOrder,
   order1: BaseOrder,
-): CreateStrategyParams => ({
-  base: base.address,
-  quote: quote.address,
-  order0: {
-    budget: order0.budget || '0',
-    min: order0.min || '0',
-    max: order0.max || '0',
-    marginalPrice: order0.marginalPrice ?? '',
-  },
-  order1: {
-    budget: order1.budget || '0',
-    min: order1.min || '0',
-    max: order1.max || '0',
-    marginalPrice: order1.marginalPrice ?? '',
-  },
-});
+): CreateStrategyParams => {
+  const params = {
+    base: base.address,
+    quote: quote.address,
+    order0: {
+      budget: order0.budget || '0',
+      min: order0.min || '0',
+      max: order0.max || '0',
+      marginalPrice: order0.marginalPrice ?? '',
+    },
+    order1: {
+      budget: order1.budget || '0',
+      min: order1.min || '0',
+      max: order1.max || '0',
+      marginalPrice: order1.marginalPrice ?? '',
+    },
+  };
+
+  // DEBUG: Log what we're sending to the SDK
+  console.log('🔍 [DEBUG] Frontend → SDK Parameters:');
+  console.log('📍 Base Token:', {
+    symbol: base.symbol,
+    address: base.address,
+    decimals: base.decimals,
+  });
+  console.log('📍 Quote Token:', {
+    symbol: quote.symbol,
+    address: quote.address,
+    decimals: quote.decimals,
+  });
+  console.log('📍 Order 0 (Buy):', params.order0);
+  console.log('📍 Order 1 (Sell):', params.order1);
+  console.log('📍 Full Params:', params);
+
+  return params;
+};
 
 interface Props {
   base?: Token;

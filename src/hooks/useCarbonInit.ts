@@ -31,10 +31,38 @@ const persistSdkCacheDump = async () => {
 };
 
 const getTokenDecimalMap = () => {
+  // Hardcode correct decimals for Hedera tokens to override any cached wrong data
+  const hederaTokenDecimals = new Map([
+    // Native HBAR token - 8 decimals (not 18!)
+    ['0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 8],
+    // TAUGF token - 6 decimals
+    ['0x000000000000000000000000000000000050623b', 6],
+  ]);
+
+  // Get cached tokens but override with hardcoded values for known tokens
   const tokens = lsService.getItem('tokenListCache')?.tokens || [];
-  return new Map(
+  const decimalsMap = new Map(
     tokens.map((token) => [token.address.toLowerCase(), token.decimals]),
   );
+
+  // Override with correct Hedera decimals
+  hederaTokenDecimals.forEach((decimals, address) => {
+    decimalsMap.set(address, decimals);
+  });
+
+  // DEBUG: Log what decimals the SDK will use
+  console.log('🔍 [DEBUG] SDK Decimals Map (with overrides):');
+  console.log(
+    '📍 HBAR decimals:',
+    decimalsMap.get('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'),
+  );
+  console.log(
+    '📍 TAUGF decimals:',
+    decimalsMap.get('0x000000000000000000000000000000000050623b'),
+  );
+  console.log('📍 Full decimalsMap:', decimalsMap);
+
+  return decimalsMap;
 };
 
 export const useCarbonInit = () => {
