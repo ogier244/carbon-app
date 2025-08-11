@@ -37,6 +37,8 @@ const getTokenDecimalMap = () => {
     ['0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 8],
     // TAUGF token - 6 decimals
     ['0x000000000000000000000000000000000050623b', 6],
+    // USDC token - 6 decimals
+    ['0x0000000000000000000000000000000000068cda', 6],
   ]);
 
   // Get cached tokens but override with hardcoded values for known tokens
@@ -59,6 +61,10 @@ const getTokenDecimalMap = () => {
   console.log(
     '📍 TAUGF decimals:',
     decimalsMap.get('0x000000000000000000000000000000000050623b'),
+  );
+  console.log(
+    '📍 USDC decimals:',
+    decimalsMap.get('0x0000000000000000000000000000000000068cda'),
   );
   console.log('📍 Full decimalsMap:', decimalsMap);
 

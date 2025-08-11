@@ -6,7 +6,11 @@
     "patch": 0
   },
   "logoURI": "https://hedera.com/logo.png",
-  "keywords": ["hedera", "testnet", "tokens"],
+  "keywords": [
+    "hedera",
+    "testnet",
+    "tokens"
+  ],
   "tokens": [
     {
       "chainId": 296,
@@ -15,6 +19,14 @@
       "symbol": "HBAR",
       "decimals": 8,
       "logoURI": "/tokens/hedera/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.svg"
+    },
+    {
+      "chainId": 296,
+      "address": "0x0000000000000000000000000000000000068cda",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6,
+      "logoURI": "/tokens/hedera/0x0000000000000000000000000000000000068cda.svg"
     },
     {
       "chainId": 296,
@@ -33,4 +45,4 @@
       "logoURI": "/tokens/hedera/0x00000000000000000000000000000000004fe9f1.svg"
     }
   ]
-} 
+}

@@ -6,6 +6,8 @@ import { Action, TradeActionBNStr } from 'libs/sdk';
 import { MatchActionBNStr, PopulatedTransaction } from '@bancor/carbon-sdk';
 import { carbonSDK } from 'libs/sdk';
 import { useWagmi } from 'libs/wagmi';
+import { utils } from 'ethers';
+import { NATIVE_TOKEN_ADDRESS } from 'utils/tokens';
 
 type GetTradeDataResult = {
   tradeActions: TradeActionBNStr[];
@@ -60,6 +62,13 @@ export const useTradeQuery = () => {
           calcDeadline(params.deadline),
           calcMaxInput(params.sourceInput),
         );
+
+        if (params.sourceAddress === NATIVE_TOKEN_ADDRESS) {
+          unsignedTx.value = utils.parseUnits(
+            calcMaxInput(params.sourceInput),
+            18,
+          );
+        }
       }
       return signer!.sendTransaction(unsignedTx);
     },

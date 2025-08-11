@@ -22,6 +22,7 @@ import { useGetAddressFromEns } from 'libs/queries/chain/ens';
 import { getAddress } from 'ethers/lib/utils';
 import { usePairs } from 'hooks/usePairs';
 import { useCarbonInit } from 'hooks/useCarbonInit';
+import { NATIVE_TOKEN_ADDRESS } from 'utils/tokens';
 
 export type StrategyStatus = 'active' | 'noBudget' | 'paused' | 'inactive';
 
@@ -377,6 +378,18 @@ export const useCreateStrategyQuery = () => {
         order1.max,
         order1.budget || '0',
       );
+
+      if (
+        base === NATIVE_TOKEN_ADDRESS &&
+        new SafeDecimal(order1.budget).gt(0)
+      ) {
+        unsignedTx.value = utils.parseUnits(order1.budget, 18);
+      } else if (
+        quote === NATIVE_TOKEN_ADDRESS &&
+        new SafeDecimal(order0.budget).gt(0)
+      ) {
+        unsignedTx.value = utils.parseUnits(order0.budget, 18);
+      }
 
       // DEBUG: Log the transaction that gets built
       console.log('🔍 [DEBUG] Carbon SDK → Transaction:');

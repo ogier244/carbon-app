@@ -1,5 +1,5 @@
 import { useWagmi } from 'libs/wagmi';
-import { Token__factory, Voucher__factory } from 'abis/types';
+import { ERC20__factory, Voucher__factory } from 'abis/types';
 import { useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import config from 'config';
@@ -21,8 +21,8 @@ export const useContract = () => {
 
   const Token = useCallback(
     (address: string) => ({
-      read: Token__factory.connect(address, provider!),
-      write: Token__factory.connect(address, signer!),
+      read: ERC20__factory.connect(address, provider!),
+      write: ERC20__factory.connect(address, signer!),
     }),
     [provider, signer],
   );
